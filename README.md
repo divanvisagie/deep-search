@@ -14,7 +14,7 @@ The input data should look like the following
     "objectlayer2": {
       "should_process": false,
       "value": 2
-    }
+    },
     "objectlayer3": {
       "should_process": true,
       "value":  3
