@@ -1,0 +1,25 @@
+{
+    "name": "Pablo",
+    "version": 1.6,
+    "object": {
+      "should_process": true,
+      "value": 1
+    },
+    "objectlayer1": {
+      "objectlayer2": {
+        "should_process": false,
+        "value": 2
+      },
+      "objectlayer3": {
+        "should_process": true,
+        "value":  3
+      }
+    },
+    "arraytest": [
+      {
+        "should_process": true,
+        "value": 2
+      }
+    ]
+  
+  }
