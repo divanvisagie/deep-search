@@ -8,16 +8,13 @@ namespace DeepSearch
     public class DeepSearchSearcher
     {
         public int SumSearch(string jsonString) {
-
-            var dec = JObject.Parse(jsonString)
-                .Descendants() //flattened list of descendants
-                .Where(x => x is JObject) //x is an object
-                .Where(x => x["should_process"] != null) //x is an object containing a should_process that is not null
-                .Where(x => (bool)x["should_process"]) // where the bool is true
-                .Select(x => (int)x["value"]) //get the value of the object and make it an int
+            return JObject.Parse(jsonString)
+                .Descendants()
+                .Where(x => x is JObject)
+                .Where(x => x["should_process"] != null)
+                .Where(x => (bool)x["should_process"])
+                .Select(x => (int)x["value"])
                 .Sum(); 
-            
-            return dec;
         }
     }
 }

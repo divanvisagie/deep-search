@@ -3,41 +3,45 @@
  */
 package deepsearch;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import junit.framework.TestCase;
-
-
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class DeepSearchSearcherTest extends TestCase {
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+@DisplayName("DeepSearchSearcher")
+public class DeepSearchSearcherTest {
 
     private DeepSearchSearcher deepSearchSearcher = new DeepSearchSearcher();
 
     private String jsonString;
 
-    @Override
-    protected void setUp() throws Exception {
+    @BeforeEach
+    void setUp() throws URISyntaxException, IOException {
         Path path = Paths.get(getClass().getClassLoader().getResource("sample.json").toURI());
         jsonString = new String(Files.readAllBytes(path));
     }
 
-
-    @Test 
-    public void testSomeLibraryMethod() {
-        DeepSearchSearcher classUnderTest = new DeepSearchSearcher();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
-    }
-
     @Test
+    @DisplayName("Test that the file is loaded")
     public void testFileLoaded() {
         assertFalse(jsonString.isEmpty());
     }
 
     @Test
-    public void testThatSumWithThisSampleReturns_4 () {
+    @DisplayName("Given sample JSON, sumOf(*) should return 4")
+    public void testThatSumWithThisSampleReturns_4() throws JsonMappingException, JsonProcessingException {
         int actual = deepSearchSearcher.sumOf(jsonString);
         
         assertEquals(4, actual);
