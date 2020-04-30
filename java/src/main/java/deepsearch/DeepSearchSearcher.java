@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class DeepSearchSearcher<T> {
+public class DeepSearchSearcher {
 
     final ObjectMapper om = new ObjectMapper();
 
